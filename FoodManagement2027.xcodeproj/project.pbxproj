@@ -14,6 +14,7 @@
 		CE6105F830918ACA006D4D7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6105F730918ACA006D4D7A /* Assets.xcassets */; };
 		CE6105FB30918ACA006D4D7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6105F930918ACA006D4D7A /* LaunchScreen.storyboard */; };
 		CE61060630918B80006D4D7A /* FoodManagementBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61060530918B80006D4D7A /* FoodManagementBrain.swift */; };
+		CEC038F73096E25200B212C7 /* UIRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC038F63096E25200B212C7 /* UIRating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CE6105FA30918ACA006D4D7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE6105FC30918ACA006D4D7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE61060530918B80006D4D7A /* FoodManagementBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodManagementBrain.swift; sourceTree = "<group>"; };
+		CEC038F63096E25200B212C7 /* UIRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		CE6105ED30918AC5006D4D7A /* FoodManagement2027 */ = {
 			isa = PBXGroup;
 			children = (
+				CEC038F53096E23600B212C7 /* Views */,
 				CE61060430918B23006D4D7A /* Models */,
 				CE61060330918B0F006D4D7A /* Controller */,
 				CE6105F430918AC5006D4D7A /* Main.storyboard */,
@@ -92,6 +95,14 @@
 				CE61060530918B80006D4D7A /* FoodManagementBrain.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		CEC038F53096E23600B212C7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CEC038F63096E25200B212C7 /* UIRating.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 				CE6105F330918AC5006D4D7A /* MealDetailController.swift in Sources */,
 				CE61060630918B80006D4D7A /* FoodManagementBrain.swift in Sources */,
 				CE6105EF30918AC5006D4D7A /* AppDelegate.swift in Sources */,
+				CEC038F73096E25200B212C7 /* UIRating.swift in Sources */,
 				CE6105F130918AC5006D4D7A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

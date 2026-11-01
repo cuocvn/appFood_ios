@@ -31,7 +31,7 @@
                                     <outletCollection property="gestureRecognizers" destination="7Ph-Jc-jgc" appends="YES" id="hK4-YM-onh"/>
                                 </connections>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hc2-R3-O7z">
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hc2-R3-O7z" customClass="UIRating" customModule="FoodManagement2027" customModuleProvider="target">
                                 <rect key="frame" x="70.666666666666686" y="529.66666666666663" width="252" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="tKk-zy-dpD"/>
