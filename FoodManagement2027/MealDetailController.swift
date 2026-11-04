@@ -12,33 +12,37 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
     //MARK: Properties
     @IBOutlet weak var Imager: UIImageView!
     @IBOutlet weak var edtMealName: UITextField!
+    @IBOutlet weak var btnGoToMap: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Tiêu đề của Navigation Bar: NewMeal
+        navigationItem.title = "NewMeal"
+        
         //B3. Thuc hien ham uy quyen cho doi tuong TextField
-        edtMealName.delegate = self
+        edtMealName?.delegate = self
     }
 
     //MARK: Dinh nghia cac ham uy quyen cho doi tuong TextField
     //B2. Dinh nghia ham uy quyen
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //print("Called")
-        edtMealName.resignFirstResponder()
+        edtMealName?.resignFirstResponder()
         return true
     }
     
-    
     //Ham lay du lieu ra khoi textField
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("ten mon an la: \(textField.text!)")
+        if let text = textField.text {
+            print("ten mon an la: \(text)")
+        }
     }
     
     //MARK: Ham Xu Li Chon Anh Tu Thu Vien Anh
-    
     @IBAction func imagePicker(_ sender: UITapGestureRecognizer) {
         //print("called")
         //An ban phim neu co
-        edtMealName.resignFirstResponder()
+        edtMealName?.resignFirstResponder()
         //Tao doi tuong UIImagePickerController
         let imagePicker = UIImagePickerController()
         //Cau hinh cho doi tuong imagePicker
@@ -53,7 +57,17 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         // Chuyen dieu khien sang man hinh imagePicker
         present(imagePicker, animated: true)
     }
+
+    // MARK: - Chuyen sang Map Screen
+    @IBAction func btnGoToMapTapped(_ sender: UIButton) {
+        if let mapVC = storyboard?.instantiateViewController(withIdentifier: "MapController") as? MapController {
+            navigationController?.pushViewController(mapVC, animated: true)
+        } else {
+            performSegue(withIdentifier: "showMap", sender: self)
+        }
+    }
 }
+
 //MARK: mo rong cho cac hm uy quyen cua UIImagePickerController
 extension MealDetailController : UIImagePickerControllerDelegate , UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -64,7 +78,7 @@ extension MealDetailController : UIImagePickerControllerDelegate , UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // xy ly anh chon duoc
         if  let selectedImage = info[.originalImage], let image = selectedImage as? UIImage{
-            Imager.image = image
+            Imager?.image = image
         }
         
         // anh man hinh hien tai => quay ve man hinh trc do

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HhG-0p-w8L">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -8,21 +8,87 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="V9n-iG-09g">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HhG-0p-w8L" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fN0-vE-04Y">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y4T-a4-e91" kind="relationship" relationship="rootViewController" id="P8b-a7-RzV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mF0-O0-9b4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1500" y="-27"/>
+        </scene>
+        <!--Meal List Controller-->
+        <scene sceneID="p4L-d5-8f6">
+            <objects>
+                <viewController storyboardIdentifier="MealListController" id="Y4T-a4-e91" customClass="MealListController" customModule="FoodManagement2027" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q8b-2x-301">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5L-d2-7c9">
+                                <rect key="frame" x="10" y="123" width="373" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="h8X-6p-29y"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uV2-g9-71m">
+                                <rect key="frame" x="10" y="183" width="373" height="625"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VfL-3w-12B"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="k5L-d2-7c9" firstAttribute="top" secondItem="VfL-3w-12B" secondAttribute="top" constant="20" id="j6K-2p-4N3"/>
+                            <constraint firstItem="k5L-d2-7c9" firstAttribute="leading" secondItem="VfL-3w-12B" secondAttribute="leading" constant="10" id="L9K-8q-V4a"/>
+                            <constraint firstItem="VfL-3w-12B" firstAttribute="trailing" secondItem="k5L-d2-7c9" secondAttribute="trailing" constant="10" id="x2A-1b-e5C"/>
+                            <constraint firstItem="uV2-g9-71m" firstAttribute="top" secondItem="k5L-d2-7c9" secondAttribute="bottom" constant="10" id="t4R-5n-01f"/>
+                            <constraint firstItem="uV2-g9-71m" firstAttribute="leading" secondItem="VfL-3w-12B" secondAttribute="leading" constant="10" id="b3C-6d-78E"/>
+                            <constraint firstItem="VfL-3w-12B" firstAttribute="trailing" secondItem="uV2-g9-71m" secondAttribute="trailing" constant="10" id="F2m-4a-67G"/>
+                            <constraint firstItem="VfL-3w-12B" firstAttribute="bottom" secondItem="uV2-g9-71m" secondAttribute="bottom" constant="10" id="h7J-3x-89B"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="List of Meals" id="N5d-9s-q7E">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="r6P-7w-vL2">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="showNewMeal" id="g5H-q6-7w8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="containerView" destination="k5L-d2-7c9" id="conn-cont-view"/>
+                        <outlet property="tableView" destination="uV2-g9-71m" id="conn-tbl-view"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g6H-1q-wX8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-680" y="-27"/>
+        </scene>
         <!--Meal Detail Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MealDetailController" customModule="FoodManagement2027" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MealDetailController" id="BYZ-38-t0r" customClass="MealDetailController" customModule="FoodManagement2027" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OXe-Gu-EFx">
-                                <rect key="frame" x="20" y="79" width="353" height="57.666666666666657"/>
+                                <rect key="frame" x="20" y="123" width="353" height="57.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="TYh-wu-9Xa">
-                                <rect key="frame" x="20" y="156.66666666666663" width="353" height="353"/>
+                                <rect key="frame" x="20" y="200.66666666666663" width="353" height="353"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TYh-wu-9Xa" secondAttribute="height" multiplier="1:1" id="2Kf-EE-TPT"/>
@@ -32,16 +98,20 @@
                                 </connections>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hc2-R3-O7z" customClass="UIRating" customModule="FoodManagement2027" customModuleProvider="target">
-                                <rect key="frame" x="70.666666666666686" y="529.66666666666663" width="252" height="44"/>
+                                <rect key="frame" x="70.666666666666686" y="573.66666666666663" width="252" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="tKk-zy-dpD"/>
                                     <constraint firstAttribute="width" constant="252" id="zLN-4y-ggA"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mll-KK-2nc">
-                                <rect key="frame" x="143" y="593.66666666666663" width="107" height="35"/>
+                                <rect key="frame" x="143" y="637.66666666666663" width="107" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Go To Map"/>
+                                <connections>
+                                    <action selector="btnGoToMapTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="act-goto-map-id"/>
+                                    <segue destination="Map-VC-Scene-ID" kind="show" identifier="showMap" id="seg-map-id"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -59,7 +129,10 @@
                             <constraint firstItem="mll-KK-2nc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v1o-zP-Vo6"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="NewMeal" id="rD8-0j-N07"/>
                     <connections>
+                        <outlet property="Imager" destination="TYh-wu-9Xa" id="img-conn-id"/>
+                        <outlet property="btnGoToMap" destination="mll-KK-2nc" id="btn-map-conn-id"/>
                         <outlet property="edtMealName" destination="OXe-Gu-EFx" id="fmW-oo-QOQ"/>
                     </connections>
                 </viewController>
@@ -72,11 +145,50 @@
             </objects>
             <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
         </scene>
+        <!--Map Controller-->
+        <scene sceneID="map-scene-id">
+            <objects>
+                <viewController storyboardIdentifier="MapController" id="Map-VC-Scene-ID" customClass="MapController" customModule="FoodManagement2027" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="map-root-view-id">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="map-view-elem-id">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="map-safe-area-id"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="map-safe-area-id" firstAttribute="trailing" secondItem="map-view-elem-id" secondAttribute="trailing" id="mc-1"/>
+                            <constraint firstItem="map-view-elem-id" firstAttribute="top" secondItem="map-safe-area-id" secondAttribute="top" id="mc-2"/>
+                            <constraint firstItem="map-view-elem-id" firstAttribute="leading" secondItem="map-safe-area-id" secondAttribute="leading" id="mc-3"/>
+                            <constraint firstItem="map-safe-area-id" firstAttribute="bottom" secondItem="map-view-elem-id" secondAttribute="bottom" id="mc-4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map Screen" id="map-nav-item-id">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="map-back-btn-id">
+                            <connections>
+                                <action selector="btnBackTapped:" destination="Map-VC-Scene-ID" id="map-back-act-id"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="map-view-elem-id" id="map-conn-id"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="map-responder-id" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="920" y="-27"/>
+        </scene>
     </scenes>
     <resources>
         <image name="default" width="150" height="112.66666412353516"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

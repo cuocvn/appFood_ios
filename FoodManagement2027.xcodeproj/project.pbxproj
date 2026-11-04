@@ -15,6 +15,8 @@
 		CE6105FB30918ACA006D4D7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6105F930918ACA006D4D7A /* LaunchScreen.storyboard */; };
 		CE61060630918B80006D4D7A /* FoodManagementBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61060530918B80006D4D7A /* FoodManagementBrain.swift */; };
 		CEC038F73096E25200B212C7 /* UIRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC038F63096E25200B212C7 /* UIRating.swift */; };
+		CEC038FA3096E25200B212C7 /* MealListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC038FB3096E25200B212C7 /* MealListController.swift */; };
+		CEC038FC3096E25200B212C7 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC038FD3096E25200B212C7 /* MapController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		CE6105FC30918ACA006D4D7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE61060530918B80006D4D7A /* FoodManagementBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodManagementBrain.swift; sourceTree = "<group>"; };
 		CEC038F63096E25200B212C7 /* UIRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRating.swift; sourceTree = "<group>"; };
+		CEC038FB3096E25200B212C7 /* MealListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListController.swift; sourceTree = "<group>"; };
+		CEC038FD3096E25200B212C7 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				CE6105F230918AC5006D4D7A /* MealDetailController.swift */,
+				CEC038FB3096E25200B212C7 /* MealListController.swift */,
+				CEC038FD3096E25200B212C7 /* MapController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -177,6 +183,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6105F330918AC5006D4D7A /* MealDetailController.swift in Sources */,
+				CEC038FA3096E25200B212C7 /* MealListController.swift in Sources */,
+				CEC038FC3096E25200B212C7 /* MapController.swift in Sources */,
 				CE61060630918B80006D4D7A /* FoodManagementBrain.swift in Sources */,
 				CE6105EF30918AC5006D4D7A /* AppDelegate.swift in Sources */,
 				CEC038F73096E25200B212C7 /* UIRating.swift in Sources */,
