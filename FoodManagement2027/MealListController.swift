@@ -10,6 +10,9 @@ import UIKit
 class MealListController: UIViewController {
 
     // MARK: - UI Components / Outlets
+    /// Navigation Bar ở trên cùng chứa tiêu đề "List of Meals" và Bar Button "Add"
+    @IBOutlet weak var navigationBar: UINavigationBar!
+
     /// View Container ở phía trên màn hình (cách trên 20px, ngang 10 và 10)
     @IBOutlet weak var containerView: UIView!
 
@@ -19,18 +22,7 @@ class MealListController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigation()
         setupUI()
-    }
-
-    // MARK: - Navigation Setup
-    private func setupNavigation() {
-        // Tiêu đề Navigation Bar: List of Meals
-        navigationItem.title = "List of Meals"
-
-        // Nút Add ở góc trên bên phải Navigation Bar
-        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(btnAddTapped))
-        navigationItem.rightBarButtonItem = addButtonItem
     }
 
     // MARK: - Setup UI & Auto Layout
@@ -38,7 +30,25 @@ class MealListController: UIViewController {
         view.backgroundColor = .systemBackground
         let safeArea = view.safeAreaLayoutGuide
 
-        // 1. Khởi tạo containerView bằng code nếu chưa có từ Storyboard
+        // 1. Navigation Bar (khởi tạo bằng code nếu chưa có từ Storyboard)
+        if navigationBar == nil {
+            let navBar = UINavigationBar()
+            navBar.translatesAutoresizingMaskIntoConstraints = false
+            let navItem = UINavigationItem(title: "List of Meals")
+            let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(btnAddTapped))
+            navItem.rightBarButtonItem = addBtn
+            navBar.setItems([navItem], animated: false)
+            view.addSubview(navBar)
+            self.navigationBar = navBar
+
+            NSLayoutConstraint.activate([
+                navBar.topAnchor.constraint(equalTo: safeArea.topAnchor),
+                navBar.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+                navBar.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
+            ])
+        }
+
+        // 2. View Container
         if containerView == nil {
             let container = UIView()
             container.backgroundColor = .systemGray5
@@ -48,19 +58,20 @@ class MealListController: UIViewController {
             view.addSubview(container)
             self.containerView = container
 
+            let topAnchorSource = navigationBar?.bottomAnchor ?? safeArea.topAnchor
             NSLayoutConstraint.activate([
                 // Cách mép trên (Top) 20px
-                container.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 20),
+                container.topAnchor.constraint(equalTo: topAnchorSource, constant: 20),
                 // Cách mép trái (Leading) 10px
                 container.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
                 // Cách mép phải (Trailing) 10px (-10)
                 container.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
-                // Chiều cao cho containerView
+                // Chiều cao container
                 container.heightAnchor.constraint(equalToConstant: 50)
             ])
         }
 
-        // 2. Khởi tạo tableView bằng code nếu chưa có từ Storyboard
+        // 3. Table View
         if tableView == nil {
             let table = UITableView()
             table.backgroundColor = .clear
@@ -81,17 +92,16 @@ class MealListController: UIViewController {
             ])
         }
 
-        // Cấu hình Delegate & DataSource cho TableView
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MealCell")
     }
 
     // MARK: - Actions
-    @IBAction @objc func btnAddTapped() {
-        // Chuyển sang màn hình MealDetailController (NewMeal)
+    @IBAction @objc func btnAddTapped(_ sender: Any) {
         if let detailVC = storyboard?.instantiateViewController(withIdentifier: "MealDetailController") as? MealDetailController {
-            navigationController?.pushViewController(detailVC, animated: true)
+            detailVC.modalPresentationStyle = .fullScreen
+            present(detailVC, animated: true)
         } else {
             performSegue(withIdentifier: "showNewMeal", sender: self)
         }
@@ -101,7 +111,7 @@ class MealListController: UIViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension MealListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0 // Hiện tại là giao diện, chưa cần nạp dữ liệu sâu
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

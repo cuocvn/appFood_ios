@@ -10,14 +10,19 @@ import UIKit
 //B1. Xac dinh Protocal chua ham uy quyen cho TextField => UITextFieldDelegate
 class MealDetailController: UIViewController, UITextFieldDelegate {
     //MARK: Properties
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var Imager: UIImageView!
     @IBOutlet weak var edtMealName: UITextField!
     @IBOutlet weak var btnGoToMap: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Tiêu đề của Navigation Bar: NewMeal
-        navigationItem.title = "NewMeal"
+        
+        // Navigation Bar ghi "NewMeal"
+        if let navBar = navigationBar, navBar.items?.first == nil {
+            let navItem = UINavigationItem(title: "NewMeal")
+            navBar.setItems([navItem], animated: false)
+        }
         
         //B3. Thuc hien ham uy quyen cho doi tuong TextField
         edtMealName?.delegate = self
@@ -26,7 +31,6 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
     //MARK: Dinh nghia cac ham uy quyen cho doi tuong TextField
     //B2. Dinh nghia ham uy quyen
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //print("Called")
         edtMealName?.resignFirstResponder()
         return true
     }
@@ -40,28 +44,19 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
     
     //MARK: Ham Xu Li Chon Anh Tu Thu Vien Anh
     @IBAction func imagePicker(_ sender: UITapGestureRecognizer) {
-        //print("called")
-        //An ban phim neu co
         edtMealName?.resignFirstResponder()
-        //Tao doi tuong UIImagePickerController
         let imagePicker = UIImagePickerController()
-        //Cau hinh cho doi tuong imagePicker
         imagePicker.sourceType = .photoLibrary
-        
-        //thuc hien thao tac uy quyen cho doi tuong imagePicker
         imagePicker.delegate = self
-        
-        //cau hinh cho imagepicker hien thi full screen
         imagePicker.modalPresentationStyle = .fullScreen
-        
-        // Chuyen dieu khien sang man hinh imagePicker
         present(imagePicker, animated: true)
     }
 
     // MARK: - Chuyen sang Map Screen
     @IBAction func btnGoToMapTapped(_ sender: UIButton) {
         if let mapVC = storyboard?.instantiateViewController(withIdentifier: "MapController") as? MapController {
-            navigationController?.pushViewController(mapVC, animated: true)
+            mapVC.modalPresentationStyle = .fullScreen
+            present(mapVC, animated: true)
         } else {
             performSegue(withIdentifier: "showMap", sender: self)
         }
@@ -71,17 +66,12 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
 //MARK: mo rong cho cac hm uy quyen cua UIImagePickerController
 extension MealDetailController : UIImagePickerControllerDelegate , UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        //an man hinh hien tai => quay ve man hinh truoc
         dismiss(animated: true)
     }
-    // ham xu ly anh lay ve tu inmagepicker
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        // xy ly anh chon duoc
-        if  let selectedImage = info[.originalImage], let image = selectedImage as? UIImage{
+        if let selectedImage = info[.originalImage], let image = selectedImage as? UIImage {
             Imager?.image = image
         }
-        
-        // anh man hinh hien tai => quay ve man hinh trc do
         dismiss(animated: true)
     }
 }
