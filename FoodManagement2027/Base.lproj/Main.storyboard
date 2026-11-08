@@ -46,6 +46,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="navigationBar" destination="WkD-1u-3lF" id="vBw-N5-8mK"/>
                         <outlet property="tableView" destination="UAt-1m-mHv" id="jDc-5I-3zC"/>
                     </connections>
                 </viewController>

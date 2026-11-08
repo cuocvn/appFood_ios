@@ -15,19 +15,16 @@ class MealListController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // 1. Them du lieu mau cho datasource
-        if let meal1 = Meal(nameMeal: "Ca Ran", image: UIImage(named: "default"), rating: 4) {
+        if let meal1 = Meal(nameMeal: "Ca Ran", image: UIImage(named: "default"), rating: 3) {
             mealList.append(meal1)
         }
-        if let meal2 = Meal(nameMeal: "Thit Kho", image: UIImage(named: "default"), rating: 5) {
-            mealList.append(meal2)
-        }
-        if let meal3 = Meal(nameMeal: "Canh Chua", image: UIImage(named: "default"), rating: 3) {
-            mealList.append(meal3)
-        }
+        
+        
         
         // 2. Dang ky myCell (xib) cho doi tuong table view
         let cellNib = UINib(nibName: "myCell", bundle: nil)
@@ -39,6 +36,12 @@ class MealListController: UIViewController {
         
         // 4. Thiet lap chieu cao cho moi dong
         tableView.rowHeight = 90
+        
+        // Them button edit bang code cho navigation bar
+        if let navigationItem = navigationBar?.topItem {
+            // Dua editButtonItem vao navigationItem ben trai
+            navigationItem.leftBarButtonItem = editButtonItem
+        }
     }
 }
 
