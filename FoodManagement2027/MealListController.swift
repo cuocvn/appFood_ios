@@ -16,6 +16,7 @@ class MealListController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var navigationBar: UINavigationBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,8 +24,6 @@ class MealListController: UIViewController {
         if let meal1 = Meal(nameMeal: "Ca Ran", image: UIImage(named: "default"), rating: 3) {
             mealList.append(meal1)
         }
-        
-        
         
         // 2. Dang ky myCell (xib) cho doi tuong table view
         let cellNib = UINib(nibName: "myCell", bundle: nil)
@@ -38,10 +37,19 @@ class MealListController: UIViewController {
         tableView.rowHeight = 90
         
         // Them button edit bang code cho navigation bar
+        // Lay navigationItem trong navigationbar
         if let navigationItem = navigationBar?.topItem {
             // Dua editButtonItem vao navigationItem ben trai
             navigationItem.leftBarButtonItem = editButtonItem
         }
+    }
+    
+    // Dinh nghia lai ham setEditing (phai nam trong class, khong duoc de trong extension)
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        // Chuyen chuc nang cho tableView
+        tableView.setEditing(editing, animated: animated)
     }
 }
 
@@ -63,6 +71,15 @@ extension MealListController: UITableViewDelegate, UITableViewDataSource {
         } else {
             // Tra ve cell rong neu khong ep kieu duoc
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Xoa du lieu trong datasource
+            mealList.remove(at: indexPath.row)
+            // Xoa phan tu trong tableview
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 }
