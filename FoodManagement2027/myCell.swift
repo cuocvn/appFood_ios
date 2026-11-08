@@ -2,16 +2,17 @@
 //  myCell.swift
 //  FoodManagement2027
 //
-//  Created by  User on 04.11.2026.
+//  Created by User on 04.11.2026.
 //
 
 import UIKit
 
-class myCell: UITableViewCell {
+class MyCell: UITableViewCell {
 
-    @IBOutlet weak var mealRating: UIRating!
-    @IBOutlet weak var mealName: UILabel!
     @IBOutlet weak var mealImage: UIImageView!
+    @IBOutlet weak var mealName: UILabel!
+    @IBOutlet weak var mealRating: UIRating!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +23,6 @@ class myCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }
+
+typealias myCell = MyCell

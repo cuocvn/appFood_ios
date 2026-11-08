@@ -9,19 +9,18 @@ import UIKit
 
 class MealListController: UIViewController {
     // MARK: - Properties
-    // Datasource cho table view
+    // Datasource cho Table View
     private var mealList = [Meal]()
-    private let reuseCell = "myTableView"
+    private let reuseCell = "myTableCell"
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var navigationBar: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // 1. Them du lieu mau cho datasource
-        if let meal1 = Meal(nameMeal: "Ca Ran", image: UIImage(named: "default"), rating: 3) {
+        if let meal1 = Meal(name: "Ca ran", image: UIImage(named: "default"), rating: 4) {
             mealList.append(meal1)
         }
         
@@ -43,43 +42,53 @@ class MealListController: UIViewController {
             navigationItem.leftBarButtonItem = editButtonItem
         }
     }
-    
-    // Dinh nghia lai ham setEditing (phai nam trong class, khong duoc de trong extension)
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        
-        // Chuyen chuc nang cho tableView
-        tableView.setEditing(editing, animated: animated)
-    }
 }
 
 // MARK: - Cac ham uy quyen cua Table View (UITableViewDelegate, UITableViewDataSource)
 extension MealListController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mealList.count
     }
     
+    // Ham do du lieu cho tung phan tu cua TableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseCell, for: indexPath) as? myCell {
-            // Lay du lieu can do vao tableview tu datasource
+        let reuseCell = "myTableCell"
+        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseCell) as? MyCell {
+            // Lay du lieu can do vao tableView tu datasource
             let meal = mealList[indexPath.row]
+            // Do du lieu vao cell
             cell.mealImage.image = meal.image
-            cell.mealName.text = meal.nameMeal
+            cell.mealName.text = meal.name
             cell.mealRating.rating = meal.rating
             
             return cell
-        } else {
-            // Tra ve cell rong neu khong ep kieu duoc
+        }
+        else {
+            // Tra ve cell rong
             return UITableViewCell()
         }
     }
     
+    // Dinh nghia lai ham setEditing
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        // Chuyen chuc nang cho tableView
+        tableView.setEditing(editing, animated: animated)
+    }
+    
+    // Dinh nghia lai ham xoa phan tu cua tableView
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Xoa du lieu trong datasource
             mealList.remove(at: indexPath.row)
-            // Xoa phan tu trong tableview
+            // Xoa phan tu tu tableView
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    // MARK: Quay ve tu man hinh DetailController
+    @IBAction func unwindFromDetailController(segue: UIStoryboardSegue) {
+        print("Quay ve tu DetailController")
     }
 }
