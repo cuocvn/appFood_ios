@@ -9,6 +9,9 @@ import UIKit
 
 class myCell: UITableViewCell {
 
+    @IBOutlet weak var mealRating: UIRating!
+    @IBOutlet weak var mealName: UILabel!
+    @IBOutlet weak var mealImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

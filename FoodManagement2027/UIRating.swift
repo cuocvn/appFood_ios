@@ -9,7 +9,11 @@ import UIKit
 
 class UIRating: UIStackView {
     //mark:diinh nghia cac bien thanh phan cua UIRATING
-    var rating = 0
+    var rating = 0 {
+        didSet {
+            updateRatingButton()
+        }
+    }
     private var ratingButtons = [UIButton]()
     @IBInspectable private var starNum: Int = 5{
         didSet {

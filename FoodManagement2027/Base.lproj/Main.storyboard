@@ -45,6 +45,9 @@
                             <constraint firstItem="WkD-1u-3lF" firstAttribute="trailing" secondItem="Y7r-C5-f3L" secondAttribute="trailing" id="rff-fi-wef"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="UAt-1m-mHv" id="jDc-5I-3zC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBx-3X-rfL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
