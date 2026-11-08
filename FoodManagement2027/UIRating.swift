@@ -10,7 +10,18 @@ import UIKit
 class UIRating: UIStackView {
     //mark:diinh nghia cac bien thanh phan cua UIRATING
     var rating = 0
-    var ratingButtons = [UIButton]()
+    private var ratingButtons = [UIButton]()
+    @IBInspectable private var starNum: Int = 5{
+        didSet {
+            settupUIRating()
+        }
+    }
+    @IBInspectable private var starSize: CGSize = CGSize(width: 44, height: 44){
+        didSet {
+            settupUIRating()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         // Goi phuong thuc xay dung doi tuong UIRating
@@ -25,6 +36,16 @@ class UIRating: UIStackView {
     
     // MARK: Phuong thuc xay dung doi tuong UIRating
     private func settupUIRating() {
+        //xoa cac btn cu truoc khi tao moi
+        for btn in ratingButtons {
+            //xoa cac rang buoc giua stackView va cac btn con
+            removeArrangedSubview(btn)
+            btn.removeFromSuperview()
+        }
+        
+        //xoa than chieu trong mang
+        ratingButtons.removeAll()
+        
         // Xay dung cac Button cua doi tuong UIRating
         // Load anh stars tu Assets
         let normal = UIImage(named: "normal")

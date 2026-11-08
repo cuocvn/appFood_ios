@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8a6-yJ-o3t">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -8,6 +8,48 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Meal List Controller-->
+        <scene sceneID="muJ-C1-tzA">
+            <objects>
+                <viewController id="8a6-yJ-o3t" customClass="MealListController" customModule="FoodManagement2027" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KE1-nE-Z6y">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WkD-1u-3lF">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <items>
+                                    <navigationItem title="List of Meals" id="kyD-U9-CNc">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0dY-gj-aL0">
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="Vjd-WU-pVh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UAt-1m-mHv">
+                                <rect key="frame" x="10" y="113" width="373" height="695"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Y7r-C5-f3L"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UAt-1m-mHv" firstAttribute="top" secondItem="WkD-1u-3lF" secondAttribute="bottom" constant="10" id="1Fy-wr-vQW"/>
+                            <constraint firstItem="Y7r-C5-f3L" firstAttribute="trailing" secondItem="UAt-1m-mHv" secondAttribute="trailing" constant="10" id="4M9-zm-o60"/>
+                            <constraint firstItem="UAt-1m-mHv" firstAttribute="leading" secondItem="Y7r-C5-f3L" secondAttribute="leading" constant="10" id="H2w-Rn-o7J"/>
+                            <constraint firstItem="WkD-1u-3lF" firstAttribute="top" secondItem="Y7r-C5-f3L" secondAttribute="top" id="NTU-Eo-oRn"/>
+                            <constraint firstItem="WkD-1u-3lF" firstAttribute="leading" secondItem="Y7r-C5-f3L" secondAttribute="leading" id="ZYA-AH-uOi"/>
+                            <constraint firstItem="Y7r-C5-f3L" firstAttribute="bottom" secondItem="UAt-1m-mHv" secondAttribute="bottom" constant="10" id="cu6-Ir-Wha"/>
+                            <constraint firstItem="WkD-1u-3lF" firstAttribute="trailing" secondItem="Y7r-C5-f3L" secondAttribute="trailing" id="rff-fi-wef"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iBx-3X-rfL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-602" y="-27"/>
+        </scene>
         <!--Meal Detail Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -17,12 +59,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OXe-Gu-EFx">
-                                <rect key="frame" x="20" y="79" width="353" height="57.666666666666657"/>
+                                <rect key="frame" x="20" y="123.00000000000001" width="353" height="57.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="TYh-wu-9Xa">
-                                <rect key="frame" x="20" y="156.66666666666663" width="353" height="353"/>
+                                <rect key="frame" x="20" y="200.66666666666663" width="353" height="353"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TYh-wu-9Xa" secondAttribute="height" multiplier="1:1" id="2Kf-EE-TPT"/>
@@ -32,17 +74,33 @@
                                 </connections>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hc2-R3-O7z" customClass="UIRating" customModule="FoodManagement2027" customModuleProvider="target">
-                                <rect key="frame" x="70.666666666666686" y="529.66666666666663" width="252" height="44"/>
+                                <rect key="frame" x="70.666666666666686" y="573.66666666666663" width="252" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="tKk-zy-dpD"/>
                                     <constraint firstAttribute="width" constant="252" id="zLN-4y-ggA"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mll-KK-2nc">
-                                <rect key="frame" x="143" y="593.66666666666663" width="107" height="35"/>
+                                <rect key="frame" x="143" y="637.66666666666663" width="107" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Go To Map"/>
+                                <connections>
+                                    <segue destination="YEz-N4-6R5" kind="presentation" modalPresentationStyle="fullScreen" id="HIb-r8-EL0"/>
+                                </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TyT-1H-Aqm">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <items>
+                                    <navigationItem title="New Meal" id="RKj-VN-cSR">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WNp-zD-cE3">
+                                            <connections>
+                                                <action selector="cancel:" destination="BYZ-38-t0r" id="PGa-CP-iOw"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="adC-aH-Dds"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -51,12 +109,15 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OXe-Gu-EFx" secondAttribute="trailing" constant="20" id="3g1-64-1g9"/>
                             <constraint firstItem="hc2-R3-O7z" firstAttribute="top" secondItem="TYh-wu-9Xa" secondAttribute="bottom" constant="20" id="7Jq-BC-0j2"/>
                             <constraint firstItem="hc2-R3-O7z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Al-bl-Nz5"/>
-                            <constraint firstItem="OXe-Gu-EFx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Jwl-Yu-I2r"/>
+                            <constraint firstItem="OXe-Gu-EFx" firstAttribute="top" secondItem="TyT-1H-Aqm" secondAttribute="bottom" constant="20" id="Jwl-Yu-I2r"/>
                             <constraint firstItem="TYh-wu-9Xa" firstAttribute="top" secondItem="OXe-Gu-EFx" secondAttribute="bottom" constant="20" id="UBW-f2-a7b"/>
+                            <constraint firstItem="TyT-1H-Aqm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eHB-wI-gO2"/>
                             <constraint firstItem="TYh-wu-9Xa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="lGy-SJ-fr9"/>
+                            <constraint firstItem="TyT-1H-Aqm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="n9h-nt-WJ6"/>
                             <constraint firstItem="mll-KK-2nc" firstAttribute="top" secondItem="hc2-R3-O7z" secondAttribute="bottom" constant="20" id="s26-4N-YwM"/>
                             <constraint firstItem="OXe-Gu-EFx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tKa-zp-Dae"/>
                             <constraint firstItem="mll-KK-2nc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v1o-zP-Vo6"/>
+                            <constraint firstItem="TyT-1H-Aqm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wd5-G1-vjd"/>
                         </constraints>
                     </view>
                     <connections>
@@ -71,6 +132,41 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="dD7-PY-Hhb">
+            <objects>
+                <viewController id="YEz-N4-6R5" customClass="MapController" customModule="FoodManagement2027" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hCQ-NL-6gT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hlV-i7-bME">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="Ilh-CD-XPd">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="mJt-m7-be2">
+                                            <connections>
+                                                <action selector="BackToMealDetal:" destination="YEz-N4-6R5" id="hsJ-Dr-M1a"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xh6-tt-gbh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hlV-i7-bME" firstAttribute="leading" secondItem="xh6-tt-gbh" secondAttribute="leading" id="Ksh-yV-xm0"/>
+                            <constraint firstItem="hlV-i7-bME" firstAttribute="top" secondItem="xh6-tt-gbh" secondAttribute="top" id="QZm-7l-P7D"/>
+                            <constraint firstItem="hlV-i7-bME" firstAttribute="trailing" secondItem="xh6-tt-gbh" secondAttribute="trailing" id="vzi-VY-Co7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="MRV-yo-HRF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qlh-62-fM7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="857" y="-27"/>
         </scene>
     </scenes>
     <resources>

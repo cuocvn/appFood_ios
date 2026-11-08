@@ -53,6 +53,12 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         // Chuyen dieu khien sang man hinh imagePicker
         present(imagePicker, animated: true)
     }
+    
+    //MARK: Navigation
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
 }
 //MARK: mo rong cho cac hm uy quyen cua UIImagePickerController
 extension MealDetailController : UIImagePickerControllerDelegate , UINavigationControllerDelegate {

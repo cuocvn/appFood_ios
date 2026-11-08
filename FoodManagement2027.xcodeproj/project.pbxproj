@@ -15,6 +15,11 @@
 		CE6105FB30918ACA006D4D7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6105F930918ACA006D4D7A /* LaunchScreen.storyboard */; };
 		CE61060630918B80006D4D7A /* FoodManagementBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61060530918B80006D4D7A /* FoodManagementBrain.swift */; };
 		CEC038F73096E25200B212C7 /* UIRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC038F63096E25200B212C7 /* UIRating.swift */; };
+		CEF43904309ABB4500425635 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF43903309ABB4500425635 /* MapController.swift */; };
+		CEF43906309AC70000425635 /* MealListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF43905309AC70000425635 /* MealListController.swift */; };
+		CEF43908309AD9B300425635 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF43907309AD9B300425635 /* Meal.swift */; };
+		CEF4390D309AEDFE00425635 /* myCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF4390B309AEDFE00425635 /* myCell.swift */; };
+		CEF4390E309AEDFE00425635 /* myCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF4390C309AEDFE00425635 /* myCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,11 @@
 		CE6105FC30918ACA006D4D7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE61060530918B80006D4D7A /* FoodManagementBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodManagementBrain.swift; sourceTree = "<group>"; };
 		CEC038F63096E25200B212C7 /* UIRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRating.swift; sourceTree = "<group>"; };
+		CEF43903309ABB4500425635 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		CEF43905309AC70000425635 /* MealListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListController.swift; sourceTree = "<group>"; };
+		CEF43907309AD9B300425635 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		CEF4390B309AEDFE00425635 /* myCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCell.swift; sourceTree = "<group>"; };
+		CEF4390C309AEDFE00425635 /* myCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = myCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				CE6105F230918AC5006D4D7A /* MealDetailController.swift */,
+				CEF43903309ABB4500425635 /* MapController.swift */,
+				CEF43905309AC70000425635 /* MealListController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -93,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				CE61060530918B80006D4D7A /* FoodManagementBrain.swift */,
+				CEF43907309AD9B300425635 /* Meal.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -101,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				CEC038F63096E25200B212C7 /* UIRating.swift */,
+				CEF4390B309AEDFE00425635 /* myCell.swift */,
+				CEF4390C309AEDFE00425635 /* myCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -164,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6105FB30918ACA006D4D7A /* LaunchScreen.storyboard in Resources */,
+				CEF4390E309AEDFE00425635 /* myCell.xib in Resources */,
 				CE6105F830918ACA006D4D7A /* Assets.xcassets in Resources */,
 				CE6105F630918AC5006D4D7A /* Main.storyboard in Resources */,
 			);
@@ -177,9 +193,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6105F330918AC5006D4D7A /* MealDetailController.swift in Sources */,
+				CEF4390D309AEDFE00425635 /* myCell.swift in Sources */,
+				CEF43906309AC70000425635 /* MealListController.swift in Sources */,
 				CE61060630918B80006D4D7A /* FoodManagementBrain.swift in Sources */,
 				CE6105EF30918AC5006D4D7A /* AppDelegate.swift in Sources */,
+				CEF43908309AD9B300425635 /* Meal.swift in Sources */,
 				CEC038F73096E25200B212C7 /* UIRating.swift in Sources */,
+				CEF43904309ABB4500425635 /* MapController.swift in Sources */,
 				CE6105F130918AC5006D4D7A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
