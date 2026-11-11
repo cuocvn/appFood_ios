@@ -101,7 +101,11 @@
                                                 <action selector="cancel:" destination="BYZ-38-t0r" id="PGa-CP-iOw"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="adC-aH-Dds"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="adC-aH-Dds">
+                                            <connections>
+                                                <segue destination="cK9-t3-6bV" kind="unwind" unwindAction="unwindFromDetailControllerWithSegue:" id="qWz-4X-2cE"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -126,9 +130,12 @@
                     </view>
                     <connections>
                         <outlet property="edtMealName" destination="OXe-Gu-EFx" id="fmW-oo-QOQ"/>
+                        <outlet property="mealImage" destination="TYh-wu-9Xa" id="8bC-mI-TYh"/>
+                        <outlet property="mealRating" destination="hc2-R3-O7z" id="9jK-mR-hc2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="cK9-t3-6bV" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="7Ph-Jc-jgc">
                     <connections>
                         <action selector="imagePicker:" destination="BYZ-38-t0r" id="0XL-Ph-0R9"/>

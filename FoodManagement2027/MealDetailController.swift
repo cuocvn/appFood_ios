@@ -2,78 +2,90 @@
 //  ViewController.swift
 //  FoodManagement2027
 //
-//  Created by  User on 28.10.2026.
+//  Created by User on 28.10.2026.
 //
 
 import UIKit
 
-//B1. Xac dinh Protocal chua ham uy quyen cho TextField => UITextFieldDelegate
+// B1. Xac dinh Protocol chua ham uy quyen cho TextField => UITextFieldDelegate
 class MealDetailController: UIViewController, UITextFieldDelegate {
-    //MARK: Properties
-    @IBOutlet weak var Imager: UIImageView!
+    // MARK: Properties
     @IBOutlet weak var edtMealName: UITextField!
+    @IBOutlet weak var mealImage: UIImageView!
+    @IBOutlet weak var mealRating: UIRating!
+    // Bien dung de truyen tham so meal giua man hinh
+    var meal: Meal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //B3. Thuc hien ham uy quyen cho doi tuong TextField
+        // B3. Thuc hien ham uy quyen cho doi tuong TextField
         edtMealName.delegate = self
     }
 
-    //MARK: Dinh nghia cac ham uy quyen cho doi tuong TextField
-    //B2. Dinh nghia ham uy quyen
+    // MARK: Dinh nghia cac ham uy quyen cho doi tuong TextField
+    // B2. Dinh nghia ham uy quyen
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //print("Called")
+        
+        // An ban phim dien thoai
         edtMealName.resignFirstResponder()
         return true
     }
     
-    
-    //Ham lay du lieu ra khoi textField
+    // Ham lay du lieu ra khoi textField
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("ten mon an la: \(textField.text!)")
+        print("Ten mon an la: \(textField.text!)")
     }
     
-    //MARK: Ham Xu Li Chon Anh Tu Thu Vien Anh
-    
+    // MARK: Ham xu ly chon anh tu thu vien anh
     @IBAction func imagePicker(_ sender: UITapGestureRecognizer) {
-        //print("called")
-        //An ban phim neu co
+        //print("Called")
+        // An ban phim (Neu co)
         edtMealName.resignFirstResponder()
-        //Tao doi tuong UIImagePickerController
+        // Tao doi tuong UIImagePickerController
         let imagePicker = UIImagePickerController()
-        //Cau hinh cho doi tuong imagePicker
+        // Cau hinh cho doi tuong imagePicker
         imagePicker.sourceType = .photoLibrary
         
-        //thuc hien thao tac uy quyen cho doi tuong imagePicker
+        // Thuc hien thao tac uy quyen cho doi tuong imagePicker
         imagePicker.delegate = self
         
-        //cau hinh cho imagepicker hien thi full screen
+        // Cau hinh cho imagePicker hien thi full Screen
         imagePicker.modalPresentationStyle = .fullScreen
         
-        // Chuyen dieu khien sang man hinh imagePicker
+        // Chuyen dieu khien sang man hinh cua imagePicker
         present(imagePicker, animated: true)
     }
     
-    //MARK: Navigation
-    
+    // MARK: Navigation
     @IBAction func cancel(_ sender: UIBarButtonItem) {
+        // An man hinh hien tai
         dismiss(animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 1. Tao mon an tu thong tin nguoi dung nhap vao
+        let name = edtMealName.text ?? ""
+        let meal = Meal(name: name, image: mealImage.image, rating: mealRating.rating)
+        // 2. Dua doi tuong meal vua tao vao bien thanh phan de truyen di
+        self.meal = meal
     }
 }
-//MARK: mo rong cho cac hm uy quyen cua UIImagePickerController
-extension MealDetailController : UIImagePickerControllerDelegate , UINavigationControllerDelegate {
+
+// MARK: Mo rong cho cac ham uy quyen cua UIImagePickerController
+extension MealDetailController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        //an man hinh hien tai => quay ve man hinh truoc
+        // Anh man hinh hien tai => Quay ve man hinh truoc
         dismiss(animated: true)
     }
-    // ham xu ly anh lay ve tu inmagepicker
+    
+    // Ham xu ly anh lay ve tu imagePicker
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        // xy ly anh chon duoc
-        if  let selectedImage = info[.originalImage], let image = selectedImage as? UIImage{
-            Imager.image = image
+        // Xu ly anh chon duoc
+        if let selectedImage = info[.originalImage], let image = selectedImage as? UIImage {
+            mealImage.image = image
         }
-        
-        // anh man hinh hien tai => quay ve man hinh trc do
+        // Anh man hinh hien tai => Quay ve man hinh truoc do
         dismiss(animated: true)
     }
 }

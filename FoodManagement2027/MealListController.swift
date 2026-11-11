@@ -89,6 +89,13 @@ extension MealListController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Quay ve tu man hinh DetailController
     @IBAction func unwindFromDetailController(segue: UIStoryboardSegue) {
-        print("Quay ve tu DetailController")
+        // Lay doi tuong controller nguon
+        if let sourceViewController = segue.source as? MealDetailController,
+           let meal = sourceViewController.meal {
+            // Them meal moi vao datasource
+            let newIndexPath = IndexPath(row: mealList.count, section: 0)
+            mealList.append(meal)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
     }
 }
