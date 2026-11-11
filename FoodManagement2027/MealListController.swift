@@ -142,7 +142,7 @@ extension MealListController: UITableViewDelegate, UITableViewDataSource {
                 self.tableView.reloadRows(at: [indexPath], with: .fade)
             }
             
-            // 2.3 Chuyen sang man hinh Detail
+            // 3. Chuyen man hinh sang Meal Detail Controller
             present(mealDetail, animated: true)
         }
     }
