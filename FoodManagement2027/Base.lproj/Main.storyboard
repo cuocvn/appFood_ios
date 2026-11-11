@@ -103,6 +103,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="adC-aH-Dds">
                                             <connections>
+                                                <action selector="save:" destination="BYZ-38-t0r" id="vW8-9k-save"/>
                                                 <segue destination="cK9-t3-6bV" kind="unwind" unwindAction="unwindFromDetailControllerWithSegue:" id="qWz-4X-2cE"/>
                                             </connections>
                                         </barButtonItem>

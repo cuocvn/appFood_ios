@@ -79,10 +79,17 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         let meal = Meal(name: name, image: mealImage.image, rating: mealRating.rating)
         // 2. Dua doi tuong meal vua tao vao bien thanh phan de truyen di
         self.meal = meal
-        
-        // Goi callback neu co
-        if let meal = meal {
+        //print("Goi ham prepare truoc khi chuyen man hinh")
+    }
+    
+    // Tao moi mon an va quay ve A
+    @IBAction func save(_ sender: UIBarButtonItem) {
+        // 1. Tao mon an tu thong tin nguoi dung nhap vao
+        let name = edtMealName.text ?? ""
+        if let meal = Meal(name: name, image: mealImage.image, rating: mealRating.rating) {
+            self.meal = meal
             getBackData?(meal)
+            dismiss(animated: true)
         }
     }
 }
