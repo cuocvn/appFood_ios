@@ -31,9 +31,6 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         // B3. Thuc hien ham uy quyen cho doi tuong TextField
         edtMealName.delegate = self
         
-        // Bat tuong tac cho mealImage de co the tap chon anh
-        mealImage.isUserInteractionEnabled = true
-        
         // 4. Cap nhat meal len giao dien neu co du lieu duoc truyen sang (Che do xem/sua)
         if let meal = meal {
             edtMealName.text = meal.name
@@ -49,6 +46,14 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         
         // An ban phim dien thoai
         edtMealName.resignFirstResponder()
+        
+        // Khi an Done o phan nhap ten -> Tu dong chuyen qua chon anh luon
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        imagePicker.modalPresentationStyle = .fullScreen
+        present(imagePicker, animated: true)
+        
         return true
     }
     
