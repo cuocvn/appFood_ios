@@ -23,8 +23,8 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
     // Bien dung de truyen tham so meal giua man hinh A va B
     var meal: Meal?
     
-    // Dinh nghia callback quay ve man hinh A
-    var getBackData: ((_ meal: Meal) -> Void)?
+    // Dinh nghia callBack quay ve man hinh A
+    var getBackData: ((Meal) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
