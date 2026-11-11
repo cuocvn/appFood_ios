@@ -87,10 +87,12 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         // 1. Tao mon an tu thong tin nguoi dung nhap vao
         let name = edtMealName.text ?? ""
         if let meal = Meal(name: name, image: mealImage.image, rating: mealRating.rating) {
-            self.meal = meal
+            // Goi callBack de truyen du lieu nguoc ve A
             getBackData?(meal)
-            dismiss(animated: true)
         }
+        
+        // An man hinh hien tai
+        dismiss(animated: true)
     }
 }
 
