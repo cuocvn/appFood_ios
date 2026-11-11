@@ -13,6 +13,7 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var edtMealName: UITextField!
     @IBOutlet weak var mealImage: UIImageView!
     @IBOutlet weak var mealRating: UIRating!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     // Thuoc tinh tuong thich neu dung Imager
     var Imager: UIImageView! {
@@ -33,6 +34,9 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         
         // Cap nhat meal len giao dien (Neu co)
         if let meal = meal {
+            if let naviItem = navigationBar.topItem {
+                naviItem.title = meal.name
+            }
             edtMealName.text = meal.name
             mealImage.image = meal.image
             mealRating.rating = meal.rating
@@ -94,12 +98,19 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         // 1. Tao mon an tu thong tin nguoi dung nhap vao
         let name = edtMealName.text ?? ""
         if let meal = Meal(name: name, image: mealImage.image, rating: mealRating.rating) {
-            // Goi callBack de truyen du lieu nguoc ve A
-            getBackData?(meal)
+            // Cap nhat meal hien tai neu la che do sua
+            if let currentMeal = self.meal {
+                currentMeal.name = meal.name
+                currentMeal.image = meal.image
+                currentMeal.rating = meal.rating
+            } else {
+                self.meal = meal
+            }
+            // 2. Goi callBack de truyen du lieu nguoc ve A
+            getBackData?(self.meal ?? meal)
+            // 3. An man hinh hien tai (chi an khi tao mon an hop le)
+            dismiss(animated: true)
         }
-        
-        // An man hinh hien tai
-        dismiss(animated: true)
     }
 }
 

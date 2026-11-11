@@ -133,6 +133,7 @@
                         <outlet property="edtMealName" destination="OXe-Gu-EFx" id="fmW-oo-QOQ"/>
                         <outlet property="mealImage" destination="TYh-wu-9Xa" id="8bC-mI-TYh"/>
                         <outlet property="mealRating" destination="hc2-R3-O7z" id="9jK-mR-hc2"/>
+                        <outlet property="navigationBar" destination="TyT-1H-Aqm" id="7Vb-nb-TyT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
