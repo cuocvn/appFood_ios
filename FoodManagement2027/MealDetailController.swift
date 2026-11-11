@@ -46,14 +46,6 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         
         // An ban phim dien thoai
         edtMealName.resignFirstResponder()
-        
-        // Khi an Done o phan nhap ten -> Tu dong chuyen qua chon anh luon
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self
-        imagePicker.modalPresentationStyle = .fullScreen
-        present(imagePicker, animated: true)
-        
         return true
     }
     
@@ -102,8 +94,6 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         // 1. Tao mon an tu thong tin nguoi dung nhap vao
         let name = edtMealName.text ?? ""
         if let meal = Meal(name: name, image: mealImage.image, rating: mealRating.rating) {
-            // 5. Truyen lai meal da chon sua ve man hinh list
-            self.meal = meal
             // Goi callBack de truyen du lieu nguoc ve A
             getBackData?(meal)
         }
