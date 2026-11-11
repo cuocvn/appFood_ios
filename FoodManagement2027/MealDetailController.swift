@@ -13,8 +13,18 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var edtMealName: UITextField!
     @IBOutlet weak var mealImage: UIImageView!
     @IBOutlet weak var mealRating: UIRating!
-    // Bien dung de truyen tham so meal giua man hinh
+    
+    // Thuoc tinh tuong thich neu dung Imager
+    var Imager: UIImageView! {
+        get { return mealImage }
+        set { mealImage = newValue }
+    }
+    
+    // Bien dung de truyen tham so meal giua man hinh A va B
     var meal: Meal?
+    
+    // Dinh nghia callback quay ve man hinh A
+    var getBackData: ((_ meal: Meal) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +79,11 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         let meal = Meal(name: name, image: mealImage.image, rating: mealRating.rating)
         // 2. Dua doi tuong meal vua tao vao bien thanh phan de truyen di
         self.meal = meal
+        
+        // Goi callback neu co
+        if let meal = meal {
+            getBackData?(meal)
+        }
     }
 }
 

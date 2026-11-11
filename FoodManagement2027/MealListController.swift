@@ -96,10 +96,26 @@ extension MealListController: UITableViewDelegate, UITableViewDataSource {
             // Cap nhat vao TableView
             // 3.1 Tim vi tri de chen mon an moi trong TableView
             let newIndexPath = IndexPath(row: mealList.count, section: 0)
-            // 3.2 Them mon an moi vao datasource
+            // 3.2 Dua mon an moi vao mealList
             mealList.append(meal)
-            // 3.3 Chen phan tu moi vao TableView
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            // 3.3 Cap nhat len tableView
+            tableView.insertRows(at: [newIndexPath], with: .fade)
+        }
+    }
+    
+    // Xu ly truoc khi chuyen man hinh
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Xu ly callback tu man hinh B
+        if let detailController = segue.destination as? MealDetailController {
+            detailController.getBackData = { (meal: Meal) in
+                // Cap nhat vao TableView
+                // 3.1 Tim vi tri de chen mon an moi trong TableView
+                let newIndexPath = IndexPath(row: self.mealList.count, section: 0)
+                // 3.2 Dua mon an moi vao mealList
+                self.mealList.append(meal)
+                // 3.3 Cap nhat len tableView
+                self.tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
         }
     }
 }
