@@ -31,7 +31,7 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         // B3. Thuc hien ham uy quyen cho doi tuong TextField
         edtMealName.delegate = self
         
-        // 4. Cap nhat meal len giao dien neu co du lieu duoc truyen sang (Che do xem/sua)
+        // Cap nhat meal len giao dien (Neu co)
         if let meal = meal {
             edtMealName.text = meal.name
             mealImage.image = meal.image
