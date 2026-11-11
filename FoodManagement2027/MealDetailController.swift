@@ -30,6 +30,13 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // B3. Thuc hien ham uy quyen cho doi tuong TextField
         edtMealName.delegate = self
+        
+        // 4. Cap nhat meal len giao dien neu co du lieu duoc truyen sang (Che do xem/sua)
+        if let meal = meal {
+            edtMealName.text = meal.name
+            mealImage.image = meal.image
+            mealRating.rating = meal.rating
+        }
     }
 
     // MARK: Dinh nghia cac ham uy quyen cho doi tuong TextField
@@ -87,6 +94,8 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         // 1. Tao mon an tu thong tin nguoi dung nhap vao
         let name = edtMealName.text ?? ""
         if let meal = Meal(name: name, image: mealImage.image, rating: mealRating.rating) {
+            // 5. Truyen lai meal da chon sua ve man hinh list
+            self.meal = meal
             // Goi callBack de truyen du lieu nguoc ve A
             getBackData?(meal)
         }
