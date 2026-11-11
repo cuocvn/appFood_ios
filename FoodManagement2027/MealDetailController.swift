@@ -31,6 +31,9 @@ class MealDetailController: UIViewController, UITextFieldDelegate {
         // B3. Thuc hien ham uy quyen cho doi tuong TextField
         edtMealName.delegate = self
         
+        // Bat tuong tac cho mealImage de co the tap chon anh
+        mealImage.isUserInteractionEnabled = true
+        
         // 4. Cap nhat meal len giao dien neu co du lieu duoc truyen sang (Che do xem/sua)
         if let meal = meal {
             edtMealName.text = meal.name
