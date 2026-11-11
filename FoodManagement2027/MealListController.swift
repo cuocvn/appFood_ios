@@ -139,11 +139,16 @@ extension MealListController: UITableViewDelegate, UITableViewDataSource {
         if let mealDetail = self.storyboard?.instantiateViewController(withIdentifier: "MealDetailID") as? MealDetailController{
             //2.2 Truyen tham so meal cho man hinh detail
             mealDetail.meal = meal
-            // Xu ly callBack de cap nhat lai mon an sau khi sua
-            mealDetail.getBackData = { (updatedMeal: Meal) in
-                self.mealList[indexPath.row] = updatedMeal
+            
+            // 2.3 Lay du lieu ve tu Detail
+            mealDetail.getBackData = { (meal:Meal) in
+                // 6. Cap nhat lai row
+                // Dua meal moi vao datgsource
+                self.mealList[indexPath.row] = meal
+                // Cap nhat lai tren tableview
                 self.tableView.reloadRows(at: [indexPath], with: .fade)
             }
+            
             // 3. Chuyen man hinh sang Meal Detail Controller
             mealDetail.modalPresentationStyle = .fullScreen
             present(mealDetail, animated: true)
